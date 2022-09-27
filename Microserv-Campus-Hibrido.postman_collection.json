@@ -1,0 +1,7214 @@
+{
+	"info": {
+		"_postman_id": "b22ade0d-7409-43ce-b5ef-864083d9923e",
+		"name": "Microserv-Campus-Hibrido",
+		"description": "Api Documentation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15549246"
+	},
+	"item": [
+		{
+			"name": "Teste logger server.port",
+			"item": [
+				{
+					"name": "Teste logger server.port api-authusers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Total de objetos são 10\", function(){\r",
+									"var responseJson = pm.response.json();\r",
+									"pm.expect(responseJson.content).length(10);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"creationDate/lastUpdateDate\", function(){\r",
+									"var responseJson = pm.response.json();\r",
+									"pm.expect(responseJson.content[0].creationDate).to.not.be.null;\r",
+									"pm.expect(responseJson.content[1].lastUpdateDate).to.not.be.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api-authuser/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api-authuser",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "username,desc",
+									"disabled": true
+								},
+								{
+									"key": "userType",
+									"value": "STUDENT",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "@meiryjoias.com.br",
+									"disabled": true
+								},
+								{
+									"key": "userStatus",
+									"value": "ACTIVE",
+									"disabled": true
+								},
+								{
+									"key": "courseId",
+									"value": "1266380e-204b-48d0-96b4-692f692ca8ad",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Teste logger server.port api-course",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Total de objetos são 02\", function(){\r",
+									"var responseJson = pm.response.json();\r",
+									"pm.expect(responseJson.content).length(2);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"var responseJson = pm.response.json();\r",
+									"pm.expect(responseJson.content [0].courseId).to.eql(\"1246380e-204b-48d0-96b4-692f692ca8ad\");\r",
+									"pm.expect(responseJson.content [1].courseId).to.eql(\"1266380e-204b-48d0-96b4-692f692ca8ad\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"courseLevel\": \"BEGINNER\",\r\n  \"courseStatus\": \"CONCLUDED\",\r\n  \"description\": \"update description 02\",\r\n  \"imageUrl\": \"http://image 02 update\",\r\n  \"name\": \"update name 02\",\r\n  \"userInstructor\": \"0246380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api-course/courses/getAllCoursesPageable?userId=8866380e-204b-48d0-96b4-692f692ca8ad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api-course",
+								"courses",
+								"getAllCoursesPageable"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "5",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "name,desc",
+									"disabled": true
+								},
+								{
+									"key": "courseLevel",
+									"value": "ADVANCED",
+									"disabled": true
+								},
+								{
+									"key": "courseStatus",
+									"value": "INPROGRESS",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "09",
+									"disabled": true
+								},
+								{
+									"key": "userId",
+									"value": "8866380e-204b-48d0-96b4-692f692ca8ad"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Api-AuthUser",
+			"item": [
+				{
+					"name": "getAllUsersPaged",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Total de objetos são 10\", function(){\r",
+									"var responseJson = pm.response.json();\r",
+									"pm.expect(responseJson.content).length(10);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"creationDate/lastUpdateDate\", function(){\r",
+									"var responseJson = pm.response.json();\r",
+									"pm.expect(responseJson.content[0].creationDate).to.not.be.null;\r",
+									"pm.expect(responseJson.content[1].lastUpdateDate).to.not.be.null;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{api-authuser}}/users",
+							"host": [
+								"{{api-authuser}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "username,desc",
+									"disabled": true
+								},
+								{
+									"key": "userType",
+									"value": "STUDENT",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "@meiryjoias.com.br",
+									"disabled": true
+								},
+								{
+									"key": "userStatus",
+									"value": "ACTIVE",
+									"disabled": true
+								},
+								{
+									"key": "courseId",
+									"value": "1266380e-204b-48d0-96b4-692f692ca8ad",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "registerUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cpf\": \"49.407.706-2\",\n  \"email\": \"new@email.com\",\n  \"fullName\": \"New Maria José\",   \n  \"password\": \"newPassword\",\n  \"phoneNumber\": \"(11)11111-1111\",\n  \"username\": \"NewMJosé\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-authuser}}/auth/signup",
+							"host": [
+								"{{api-authuser}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "registerUser - bad Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"Bad Request\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cpf\": \"49.407.706-2\",\n  \"email\": \"new2@email.com\",\n  \"fullName\": \"New Maria José\",   \n  \"password\": \"newPassword\",\n  \"phoneNumber\": \"(11)11111-1111\",\n  \"username\": \"New MJosé\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-authuser}}/auth/signup",
+							"host": [
+								"{{api-authuser}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "registerUser - bad Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"Bad Request\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cpf\": \"49.407.706-2\",\n  \"email\": \"new@email.com\",\n  \"fullName\": \"New Maria José\",   \n  \"password\": \"newPassword\",\n  \"phoneNumber\": \"(11)11111-1111\",\n  \"username\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-authuser}}/auth/signup",
+							"host": [
+								"{{api-authuser}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "getOneUser 2766380e",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{api-authuser}}/users/2766380e-204b-48d0-96b4-692f692ca8ad",
+							"host": [
+								"{{api-authuser}}"
+							],
+							"path": [
+								"users",
+								"2766380e-204b-48d0-96b4-692f692ca8ad"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
+											"description": "(Required) userId"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
+											"description": "(Required) userId"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
+											"description": "(Required) userId"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
+											"description": "(Required) userId"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "getAllUsersPaged",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Total de objetos são 01\", function(){\r",
+									"var responseJson = pm.response.json();\r",
+									"pm.expect(responseJson.content).length(1);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"creationDate/lastUpdateDate\", function(){\r",
+									"var responseJson = pm.response.json();\r",
+									"pm.expect(responseJson.content[0].creationDate).to.not.be.null;\r",
+									"pm.expect(responseJson.content[0].lastUpdateDate).to.not.be.null;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{api-authuser}}/users?courseId=778445d9-6013-422f-91ef-1e53993f57e7",
+							"host": [
+								"{{api-authuser}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "username,desc",
+									"disabled": true
+								},
+								{
+									"key": "userType",
+									"value": "STUDENT",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "@meiryjoias.com.br",
+									"disabled": true
+								},
+								{
+									"key": "userStatus",
+									"value": "ACTIVE",
+									"disabled": true
+								},
+								{
+									"key": "courseId",
+									"value": "778445d9-6013-422f-91ef-1e53993f57e7"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "deleteUser 2766380e",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"User deletado com sucesso.\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{api-authuser}}/users/2766380e-204b-48d0-96b4-692f692ca8ad",
+							"host": [
+								"{{api-authuser}}"
+							],
+							"path": [
+								"users",
+								"2766380e-204b-48d0-96b4-692f692ca8ad"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
+											"description": "(Required) userId"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "No Content",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
+											"description": "(Required) userId"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
+											"description": "(Required) userId"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
+											"description": "(Required) userId"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "getOneUser - erro",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"User não encontrado...\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{api-authuser}}/users/2766380e-204b-48d0-96b4-692f692ca8ad",
+							"host": [
+								"{{api-authuser}}"
+							],
+							"path": [
+								"users",
+								"2766380e-204b-48d0-96b4-692f692ca8ad"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
+											"description": "(Required) userId"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
+											"description": "(Required) userId"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
+											"description": "(Required) userId"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
+											"description": "(Required) userId"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "registerUser - erro",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 409\", function () {\r",
+									"pm.response.to.have.status(409);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"Erro: Username já existe!\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cpf\": \"49.407.706-2\",\n  \"email\": \"new@email.com\",\n  \"fullName\": \"New Maria José\",\n  \"password\": \"newPassword\",\n  \"phoneNumber\": \"(11)11111-1111\",\n  \"username\": \"NewMJosé\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-authuser}}/auth/signup",
+							"host": [
+								"{{api-authuser}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "registerUser - erro",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 409\", function () {\r",
+									"pm.response.to.have.status(409);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensagem\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"Erro: Email já existe!\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cpf\": \"49.407.706-2\",\n  \"email\": \"new@email.com\",\n  \"fullName\": \"New Maria José\",\n  \"password\": \"newPassword\",\n  \"phoneNumber\": \"(11)11111-1111\",\n  \"username\": \"nnnNewMJosé\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-authuser}}/auth/signup",
+							"host": [
+								"{{api-authuser}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "deleteUser - erro",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"User não encontrado...\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{api-authuser}}/users/2766380e-204b-48d0-96b4-692f692ca8ad",
+							"host": [
+								"{{api-authuser}}"
+							],
+							"path": [
+								"users",
+								"2766380e-204b-48d0-96b4-692f692ca8ad"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
+											"description": "(Required) userId"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "No Content",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
+											"description": "(Required) userId"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
+											"description": "(Required) userId"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
+											"description": "(Required) userId"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Image 7666380e",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"var responseJson = pm.response.json();\r",
+									"pm.expect(responseJson.imageUrl).to.eql(\"new imageUrl\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"imageUrl\": \"new imageUrl\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-authuser}}/users/7666380e-204b-48d0-96b4-692f692ca8ad/image",
+							"host": [
+								"{{api-authuser}}"
+							],
+							"path": [
+								"users",
+								"7666380e-204b-48d0-96b4-692f692ca8ad",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Image 7666380e - bad Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"Bad Request\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"imageUrl\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-authuser}}/users/7666380e-204b-48d0-96b4-692f692ca8ad/image",
+							"host": [
+								"{{api-authuser}}"
+							],
+							"path": [
+								"users",
+								"7666380e-204b-48d0-96b4-692f692ca8ad",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Image - erro",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"User não encontrado.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"imageUrl\": \"new imageUrl\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-authuser}}/users/0066380e-204b-48d0-96b4-692f692ca8ad/image",
+							"host": [
+								"{{api-authuser}}"
+							],
+							"path": [
+								"users",
+								"0066380e-204b-48d0-96b4-692f692ca8ad",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User 7666380e",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"var responseJson = pm.response.json();\r",
+									"pm.expect(responseJson.cpf).to.eql(\"764.693.489-55\");\r",
+									"pm.expect(responseJson.fullName).to.eql(\"New Maria José\");\r",
+									"pm.expect(responseJson.phoneNumber).to.eql(\"(22)11111-1111\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cpf\": \"764.693.489-55\",\n  \"fullName\": \"New Maria José\",\n  \"phoneNumber\": \"(22)11111-1111\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-authuser}}/users/7666380e-204b-48d0-96b4-692f692ca8ad",
+							"host": [
+								"{{api-authuser}}"
+							],
+							"path": [
+								"users",
+								"7666380e-204b-48d0-96b4-692f692ca8ad"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "User - erro",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"User não encontrado.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cpf\": \"z49.407.706-2\",\n  \"fullName\": \"New Postman Maria José\",\n  \"phoneNumber\": \"(22)11111-1111\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-authuser}}/users/0066380e-204b-48d0-96b4-692f692ca8ad",
+							"host": [
+								"{{api-authuser}}"
+							],
+							"path": [
+								"users",
+								"0066380e-204b-48d0-96b4-692f692ca8ad"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Password User 7666380e",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"Senha atualizada com sucesso.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"oldPassword\": \"Password 3\",\n  \"password\": \"new Password 3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-authuser}}/users/7666380e-204b-48d0-96b4-692f692ca8ad/password",
+							"host": [
+								"{{api-authuser}}"
+							],
+							"path": [
+								"users",
+								"7666380e-204b-48d0-96b4-692f692ca8ad",
+								"password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Password User - bad Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"Bad Request\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"oldPassword\": \"\",\n  \"password\": \"new Password 3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-authuser}}/users/7666380e-204b-48d0-96b4-692f692ca8ad/password",
+							"host": [
+								"{{api-authuser}}"
+							],
+							"path": [
+								"users",
+								"7666380e-204b-48d0-96b4-692f692ca8ad",
+								"password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Password User - erro",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 409\", function () {\r",
+									"pm.response.to.have.status(409);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"Erro: Senhas divergentes...\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"oldPassword\": \"new x Password 3\",\n  \"password\": \"new Password 3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-authuser}}/users/7666380e-204b-48d0-96b4-692f692ca8ad/password",
+							"host": [
+								"{{api-authuser}}"
+							],
+							"path": [
+								"users",
+								"7666380e-204b-48d0-96b4-692f692ca8ad",
+								"password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Password User - erro",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"User não encontrado.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"oldPassword\": \"Password 3\",\n  \"password\": \"new Password 3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-authuser}}/users/0066380e-204b-48d0-96b4-692f692ca8ad/password",
+							"host": [
+								"{{api-authuser}}"
+							],
+							"path": [
+								"users",
+								"0066380e-204b-48d0-96b4-692f692ca8ad",
+								"password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/signup",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "api-course",
+			"item": [
+				{
+					"name": "course",
+					"item": [
+						{
+							"name": "all coursesPaged",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Total de objetos são 02\", function(){\r",
+											"var responseJson = pm.response.json();\r",
+											"pm.expect(responseJson.content).length(2);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"var responseJson = pm.response.json();\r",
+											"pm.expect(responseJson.content [0].courseId).to.eql(\"1246380e-204b-48d0-96b4-692f692ca8ad\");\r",
+											"pm.expect(responseJson.content [1].courseId).to.eql(\"1266380e-204b-48d0-96b4-692f692ca8ad\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"courseLevel\": \"BEGINNER\",\r\n  \"courseStatus\": \"CONCLUDED\",\r\n  \"description\": \"update description 02\",\r\n  \"imageUrl\": \"http://image 02 update\",\r\n  \"name\": \"update name 02\",\r\n  \"userInstructor\": \"0246380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-course}}/courses/getAllCoursesPageable?userId=8866380e-204b-48d0-96b4-692f692ca8ad",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"courses",
+										"getAllCoursesPageable"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0",
+											"disabled": true
+										},
+										{
+											"key": "size",
+											"value": "5",
+											"disabled": true
+										},
+										{
+											"key": "sort",
+											"value": "name,desc",
+											"disabled": true
+										},
+										{
+											"key": "courseLevel",
+											"value": "ADVANCED",
+											"disabled": true
+										},
+										{
+											"key": "courseStatus",
+											"value": "INPROGRESS",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "09",
+											"disabled": true
+										},
+										{
+											"key": "userId",
+											"value": "8866380e-204b-48d0-96b4-692f692ca8ad"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "one course",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"name 04\");\r",
+											"pm.expect(pm.response.text()).to.includes(\"description 04\");\r",
+											"pm.expect(pm.response.text()).to.includes(\"http://image 04\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"courseLevel\": \"BEGINNER\",\r\n  \"courseStatus\": \"CONCLUDED\",\r\n  \"description\": \"update description 02\",\r\n  \"imageUrl\": \"http://image 02 update\",\r\n  \"name\": \"update name 02\",\r\n  \"userInstructor\": \"0246380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-course}}/courses/getOneCourse/1266380e-204b-48d0-96b4-692f692ca8ad",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"courses",
+										"getOneCourse",
+										"1266380e-204b-48d0-96b4-692f692ca8ad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "one course - erro",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"Curso não encontrado.\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"courseLevel\": \"BEGINNER\",\r\n  \"courseStatus\": \"CONCLUDED\",\r\n  \"description\": \"update description 02\",\r\n  \"imageUrl\": \"http://image 02 update\",\r\n  \"name\": \"update name 02\",\r\n  \"userInstructor\": \"0246380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-course}}/courses/getOneCourse/0266380e-204b-48d0-96b4-692f692ca8ad",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"courses",
+										"getOneCourse",
+										"0266380e-204b-48d0-96b4-692f692ca8ad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New course",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"New name\");\r",
+											"pm.expect(pm.response.text()).to.includes(\"New description\");\r",
+											"pm.expect(pm.response.text()).to.includes(\"http://image new\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"courseLevel\": \"BEGINNER\",\r\n  \"courseStatus\": \"INPROGRESS\",\r\n  \"description\": \"New description\",\r\n  \"imageUrl\": \"http://image new\",\r\n  \"name\": \"New name\",\r\n  \"userInstructor\": \"5466380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-course}}/courses",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"courses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "course UUID - 1246",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"update name 02\");\r",
+											"pm.expect(pm.response.text()).to.includes(\"update description 02\");\r",
+											"pm.expect(pm.response.text()).to.includes(\"http://image 02 update\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"courseLevel\": \"BEGINNER\",\r\n  \"courseStatus\": \"CONCLUDED\",\r\n  \"description\": \"update description 02\",\r\n  \"imageUrl\": \"http://image 02 update\",\r\n  \"name\": \"update name 02\",\r\n  \"userInstructor\": \"0246380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-course}}/courses/1246380e-204b-48d0-96b4-692f692ca8ad",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"courses",
+										"1246380e-204b-48d0-96b4-692f692ca8ad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "course UUID- 0016",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"Deletamos o curso com sucesso!\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api-course}}/courses/0016380e-204b-48d0-96b4-692f692ca8ad",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"courses",
+										"0016380e-204b-48d0-96b4-692f692ca8ad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "course - erro",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"Curso não existe.\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api-course}}/courses/0016380e-204b-48d0-96b4-692f692ca8ad",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"courses",
+										"0016380e-204b-48d0-96b4-692f692ca8ad"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "module",
+					"item": [
+						{
+							"name": "all modules into course",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"title 02\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"description\": \"new description\",\r\n  \"title\": \"new title\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-course}}/courses/1256380e-204b-48d0-96b4-692f692ca8ad/modulesFindAllPaged?title=02",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"courses",
+										"1256380e-204b-48d0-96b4-692f692ca8ad",
+										"modulesFindAllPaged"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0",
+											"disabled": true
+										},
+										{
+											"key": "size",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "sort",
+											"value": "creationDate,DESC",
+											"disabled": true
+										},
+										{
+											"key": "title",
+											"value": "02"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "new module",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"new title\");\r",
+											"pm.expect(pm.response.text()).to.includes(\"new description\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"description\": \"new description\",\r\n  \"title\": \"new title\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-course}}/courses/1256380e-204b-48d0-96b4-692f692ca8ad/modules",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"courses",
+										"1256380e-204b-48d0-96b4-692f692ca8ad",
+										"modules"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "course id-1276 e modulo id-5596",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"title 06\");\r",
+											"pm.expect(pm.response.text()).to.includes(\"description 06\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"description\": \"new description\",\r\n  \"title\": \"new title\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-course}}/courses/1276380e-204b-48d0-96b4-692f692ca8ad/modules/5596380e-204b-48d0-96b4-692f692ca8ad",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"courses",
+										"1276380e-204b-48d0-96b4-692f692ca8ad",
+										"modules",
+										"5596380e-204b-48d0-96b4-692f692ca8ad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "course id-1276 e modulo id-erro",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"O módulo e/ou o curso não existe(m)...\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"description\": \"new description\",\r\n  \"title\": \"new title\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-course}}/courses/1276380e-204b-48d0-96b4-692f692ca8ad/modules/0000380e-204b-48d0-96b4-692f692ca8ad",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"courses",
+										"1276380e-204b-48d0-96b4-692f692ca8ad",
+										"modules",
+										"0000380e-204b-48d0-96b4-692f692ca8ad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "course id-erro e modulo id-erro",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"O módulo e/ou o curso não existe(m)...\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"description\": \"new description\",\r\n  \"title\": \"new title\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-course}}/courses/0000380e-204b-48d0-96b4-692f692ca8ad/modules/0000380e-204b-48d0-96b4-692f692ca8ad",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"courses",
+										"0000380e-204b-48d0-96b4-692f692ca8ad",
+										"modules",
+										"0000380e-204b-48d0-96b4-692f692ca8ad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "course id-erro e modulo id-5596",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"O módulo e/ou o curso não existe(m)...\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"description\": \"new description\",\r\n  \"title\": \"new title\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-course}}/courses/0000380e-204b-48d0-96b4-692f692ca8ad/modules/5596380e-204b-48d0-96b4-692f692ca8ad",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"courses",
+										"0000380e-204b-48d0-96b4-692f692ca8ad",
+										"modules",
+										"5596380e-204b-48d0-96b4-692f692ca8ad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "course id-1276 e modulo id-5296",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"Módulo deletado com sucesso.\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api-course}}/courses/1276380e-204b-48d0-96b4-692f692ca8ad/modules/5296380e-204b-48d0-96b4-692f692ca8ad",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"courses",
+										"1276380e-204b-48d0-96b4-692f692ca8ad",
+										"modules",
+										"5296380e-204b-48d0-96b4-692f692ca8ad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "course id-erro e modulo id-erro",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"O módulo e/ou o curso não existe(m)...\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api-course}}/courses/0000380e-204b-48d0-96b4-692f692ca8ad/modules/0000380e-204b-48d0-96b4-692f692ca8ad",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"courses",
+										"0000380e-204b-48d0-96b4-692f692ca8ad",
+										"modules",
+										"0000380e-204b-48d0-96b4-692f692ca8ad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "course id-1276 e modulo id-erro",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"O módulo e/ou o curso não existe(m)...\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api-course}}/courses/1276380e-204b-48d0-96b4-692f692ca8ad/modules/0000380e-204b-48d0-96b4-692f692ca8ad",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"courses",
+										"1276380e-204b-48d0-96b4-692f692ca8ad",
+										"modules",
+										"0000380e-204b-48d0-96b4-692f692ca8ad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "course id-erro e modulo id-5296",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"O módulo e/ou o curso não existe(m)...\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api-course}}/courses/0000380e-204b-48d0-96b4-692f692ca8ad/modules/5296380e-204b-48d0-96b4-692f692ca8ad",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"courses",
+										"0000380e-204b-48d0-96b4-692f692ca8ad",
+										"modules",
+										"5296380e-204b-48d0-96b4-692f692ca8ad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "course id-1296 e modulo id-5896",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"update title\");\r",
+											"pm.expect(pm.response.text()).to.includes(\"update description\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"description\": \"update description\",\r\n  \"title\": \"update title\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-course}}/courses/1296380e-204b-48d0-96b4-692f692ca8ad/modules/5896380e-204b-48d0-96b4-692f692ca8ad",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"courses",
+										"1296380e-204b-48d0-96b4-692f692ca8ad",
+										"modules",
+										"5896380e-204b-48d0-96b4-692f692ca8ad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "course id-erro e modulo id-erro",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"O módulo e/ou o curso não existe(m)...\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"description\": \"update description\",\r\n  \"title\": \"update title\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-course}}/courses/0000380e-204b-48d0-96b4-692f692ca8ad/modules/0000380e-204b-48d0-96b4-692f692ca8ad",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"courses",
+										"0000380e-204b-48d0-96b4-692f692ca8ad",
+										"modules",
+										"0000380e-204b-48d0-96b4-692f692ca8ad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "course id-1296 e modulo id-erro",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"O módulo e/ou o curso não existe(m)...\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"description\": \"update description\",\r\n  \"title\": \"update title\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-course}}/courses/1296380e-204b-48d0-96b4-692f692ca8ad/modules/0000380e-204b-48d0-96b4-692f692ca8ad",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"courses",
+										"1296380e-204b-48d0-96b4-692f692ca8ad",
+										"modules",
+										"0000380e-204b-48d0-96b4-692f692ca8ad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "course id-erro e modulo id-5896",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"O módulo e/ou o curso não existe(m)...\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"description\": \"update description\",\r\n  \"title\": \"update title\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-course}}/courses/0000380e-204b-48d0-96b4-692f692ca8ad/modules/5896380e-204b-48d0-96b4-692f692ca8ad",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"courses",
+										"0000380e-204b-48d0-96b4-692f692ca8ad",
+										"modules",
+										"5896380e-204b-48d0-96b4-692f692ca8ad"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Lesson",
+					"item": [
+						{
+							"name": "New Lesson",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"new description\");\r",
+											"pm.expect(pm.response.text()).to.includes(\"new title\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"description\": \"new description\",\r\n  \"title\": \"new title\",\r\n  \"videoUrl\": \"http://video new\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-course}}/modules/5896380e-204b-48d0-96b4-692f692ca8ad//newLesson",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"modules",
+										"5896380e-204b-48d0-96b4-692f692ca8ad",
+										"",
+										"newLesson"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Lesson - erro",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"Módulo não existe...\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"description\": \"new description\",\r\n  \"title\": \"new title\",\r\n  \"videoUrl\": \"http://video new\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-course}}/modules/0000380e-204b-48d0-96b4-692f692ca8ad//newLesson",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"modules",
+										"0000380e-204b-48d0-96b4-692f692ca8ad",
+										"",
+										"newLesson"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "modulo id-5696 e lesson id-9496",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"Lição deletada com sucesso!\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api-course}}/modules/5696380e-204b-48d0-96b4-692f692ca8ad/lessons/9496380e-204b-48d0-96b4-692f692ca8ad",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"modules",
+										"5696380e-204b-48d0-96b4-692f692ca8ad",
+										"lessons",
+										"9496380e-204b-48d0-96b4-692f692ca8ad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "modulo id-erro e lesson id-erro",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"O módulo e/ou a lição não existe(m)...\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api-course}}/modules/0000380e-204b-48d0-96b4-692f692ca8ad/lessons/0000380e-204b-48d0-96b4-692f692ca8ad",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"modules",
+										"0000380e-204b-48d0-96b4-692f692ca8ad",
+										"lessons",
+										"0000380e-204b-48d0-96b4-692f692ca8ad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "modulo id-5696 e lesson id-erro",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"O módulo e/ou a lição não existe(m)...\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api-course}}/modules/5696380e-204b-48d0-96b4-692f692ca8ad/lessons/0000380e-204b-48d0-96b4-692f692ca8ad",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"modules",
+										"5696380e-204b-48d0-96b4-692f692ca8ad",
+										"lessons",
+										"0000380e-204b-48d0-96b4-692f692ca8ad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "modulo id-erro e lesson id-9496",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"O módulo e/ou a lição não existe(m)...\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{api-course}}/modules/0000380e-204b-48d0-96b4-692f692ca8ad/lessons/9496380e-204b-48d0-96b4-692f692ca8ad",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"modules",
+										"0000380e-204b-48d0-96b4-692f692ca8ad",
+										"lessons",
+										"9496380e-204b-48d0-96b4-692f692ca8ad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "modulo id-5696 e lesson id-9796",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"updated title\");\r",
+											"pm.expect(pm.response.text()).to.includes(\"updated description\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"description\": \"updated description\",\r\n  \"title\": \"updated title\",\r\n  \"videoUrl\": \"http://video updated\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-course}}/modules/5696380e-204b-48d0-96b4-692f692ca8ad/updateLesson/9796380e-204b-48d0-96b4-692f692ca8ad",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"modules",
+										"5696380e-204b-48d0-96b4-692f692ca8ad",
+										"updateLesson",
+										"9796380e-204b-48d0-96b4-692f692ca8ad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "modulo id-erro e lesson id-erro",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"O módulo e/ou a lição não existe(m)...\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"description\": \"updated description\",\r\n  \"title\": \"updated title\",\r\n  \"videoUrl\": \"http://video updated\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-course}}/modules/0000380e-204b-48d0-96b4-692f692ca8ad/updateLesson/0000380e-204b-48d0-96b4-692f692ca8ad",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"modules",
+										"0000380e-204b-48d0-96b4-692f692ca8ad",
+										"updateLesson",
+										"0000380e-204b-48d0-96b4-692f692ca8ad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "modulo id-erro e lesson id-9796",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"O módulo e/ou a lição não existe(m)...\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"description\": \"updated description\",\r\n  \"title\": \"updated title\",\r\n  \"videoUrl\": \"http://video updated\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-course}}/modules/0000380e-204b-48d0-96b4-692f692ca8ad/updateLesson/9796380e-204b-48d0-96b4-692f692ca8ad",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"modules",
+										"0000380e-204b-48d0-96b4-692f692ca8ad",
+										"updateLesson",
+										"9796380e-204b-48d0-96b4-692f692ca8ad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "modulo id-5696 e lesson id-erro",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"O módulo e/ou a lição não existe(m)...\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"description\": \"updated description\",\r\n  \"title\": \"updated title\",\r\n  \"videoUrl\": \"http://video updated\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api-course}}/modules/5696380e-204b-48d0-96b4-692f692ca8ad/updateLesson/0000380e-204b-48d0-96b4-692f692ca8ad",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"modules",
+										"5696380e-204b-48d0-96b4-692f692ca8ad",
+										"updateLesson",
+										"0000380e-204b-48d0-96b4-692f692ca8ad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "allLessonsPaged",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Total de objetos são 03\", function(){\r",
+											"var responseJson = pm.response.json();\r",
+											"pm.expect(responseJson.content).length(3);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"var responseJson = pm.response.json();\r",
+											"pm.expect(responseJson.content [0].lessonId).to.eql(\"9136380e-204b-48d0-96b4-692f692ca8ad\");\r",
+											"pm.expect(responseJson.content [1].lessonId).to.eql(\"9126380e-204b-48d0-96b4-692f692ca8ad\");\r",
+											"pm.expect(responseJson.content [2].lessonId).to.eql(\"9796380e-204b-48d0-96b4-692f692ca8ad\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-course}}/modules/5696380e-204b-48d0-96b4-692f692ca8ad/allLessonsPaged?sort=creationDate,DESC",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"modules",
+										"5696380e-204b-48d0-96b4-692f692ca8ad",
+										"allLessonsPaged"
+									],
+									"query": [
+										{
+											"key": "title",
+											"value": "06",
+											"disabled": true
+										},
+										{
+											"key": "sort",
+											"value": "creationDate,DESC"
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "size",
+											"value": "2",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "modulo id-5123 e lesson id-9226",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"title 10.2\");\r",
+											"pm.expect(pm.response.text()).to.includes(\"description 10.2\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-course}}/modules/5123380e-204b-48d0-96b4-692f692ca8ad/oneLesson/9226380e-204b-48d0-96b4-692f692ca8ad",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"modules",
+										"5123380e-204b-48d0-96b4-692f692ca8ad",
+										"oneLesson",
+										"9226380e-204b-48d0-96b4-692f692ca8ad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "modulo id-erro e lesson id-erro",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"O módulo e/ou a lição não existe(m)...\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-course}}/modules/0000380e-204b-48d0-96b4-692f692ca8ad/oneLesson/0000380e-204b-48d0-96b4-692f692ca8ad",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"modules",
+										"0000380e-204b-48d0-96b4-692f692ca8ad",
+										"oneLesson",
+										"0000380e-204b-48d0-96b4-692f692ca8ad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "modulo id-erro e lesson id-9226",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"O módulo e/ou a lição não existe(m)...\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-course}}/modules/0000380e-204b-48d0-96b4-692f692ca8ad/oneLesson/9226380e-204b-48d0-96b4-692f692ca8ad",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"modules",
+										"0000380e-204b-48d0-96b4-692f692ca8ad",
+										"oneLesson",
+										"9226380e-204b-48d0-96b4-692f692ca8ad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "modulo id-5123 e lesson id-erro",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body\", function(){\r",
+											"console.log(pm.response.text());\r",
+											"pm.expect(pm.response.text()).to.includes(\"O módulo e/ou a lição não existe(m)...\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api-course}}/modules/5123380e-204b-48d0-96b4-692f692ca8ad/oneLesson/0000380e-204b-48d0-96b4-692f692ca8ad",
+									"host": [
+										"{{api-course}}"
+									],
+									"path": [
+										"modules",
+										"5123380e-204b-48d0-96b4-692f692ca8ad",
+										"oneLesson",
+										"0000380e-204b-48d0-96b4-692f692ca8ad"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Composition Pattern",
+			"item": [
+				{
+					"name": "All Courses By User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Total de objetos são 02\", function(){\r",
+									"var responseJson = pm.response.json();\r",
+									"pm.expect(responseJson.content).length(2);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"var responseJson = pm.response.json();\r",
+									"pm.expect(responseJson.content [0].courseId).to.eql(\"1246380e-204b-48d0-96b4-692f692ca8ad\");\r",
+									"pm.expect(responseJson.content [1].courseId).to.eql(\"1266380e-204b-48d0-96b4-692f692ca8ad\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api-authuser}}/users/8866380e-204b-48d0-96b4-692f692ca8ad/courses",
+							"host": [
+								"{{api-authuser}}"
+							],
+							"path": [
+								"users",
+								"8866380e-204b-48d0-96b4-692f692ca8ad",
+								"courses"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "name,desc",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Users By Course",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Total de objetos são 02\", function(){\r",
+									"var responseJson = pm.response.json();\r",
+									"pm.expect(responseJson.content).length(2);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"var responseJson = pm.response.json();\r",
+									"pm.expect(responseJson.content [0].userId).to.eql(\"7666380e-204b-48d0-96b4-692f692ca8ad\");\r",
+									"pm.expect(responseJson.content [1].userId).to.eql(\"8866380e-204b-48d0-96b4-692f692ca8ad\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api-course}}/courses/1266380e-204b-48d0-96b4-692f692ca8ad/users",
+							"host": [
+								"{{api-course}}"
+							],
+							"path": [
+								"courses",
+								"1266380e-204b-48d0-96b4-692f692ca8ad",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "username,desc",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Subscription user/course",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"8866380e-204b-48d0-96b4-692f692ca8ad\");\r",
+									"pm.expect(pm.response.text()).to.includes(\"1296380e-204b-48d0-96b4-692f692ca8ad\");\r",
+									"pm.expect(pm.response.text()).to.includes(\"0296380e-204b-48d0-96b4-692f692ca8ad\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"8866380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-course}}/courses/1296380e-204b-48d0-96b4-692f692ca8ad/users/subscription",
+							"host": [
+								"{{api-course}}"
+							],
+							"path": [
+								"courses",
+								"1296380e-204b-48d0-96b4-692f692ca8ad",
+								"users",
+								"subscription"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Subscription user/course - user Blocked",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 409\", function () {\r",
+									"pm.response.to.have.status(409);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"User is blocked.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"2966380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-course}}/courses/1246380e-204b-48d0-96b4-692f692ca8ad/users/subscription",
+							"host": [
+								"{{api-course}}"
+							],
+							"path": [
+								"courses",
+								"1246380e-204b-48d0-96b4-692f692ca8ad",
+								"users",
+								"subscription"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Subscription user/course -  user Not Found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"User not found.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"0000380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-course}}/courses/1246380e-204b-48d0-96b4-692f692ca8ad/users/subscription",
+							"host": [
+								"{{api-course}}"
+							],
+							"path": [
+								"courses",
+								"1246380e-204b-48d0-96b4-692f692ca8ad",
+								"users",
+								"subscription"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Subscription user/course - Subscription Exists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 409\", function () {\r",
+									"pm.response.to.have.status(409);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"Error: subscription already exists!\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"8866380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-course}}/courses/1266380e-204b-48d0-96b4-692f692ca8ad/users/subscription",
+							"host": [
+								"{{api-course}}"
+							],
+							"path": [
+								"courses",
+								"1266380e-204b-48d0-96b4-692f692ca8ad",
+								"users",
+								"subscription"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Subscription user/course - Course Not Found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"Course Not Found.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"8866380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-course}}/courses/0000380e-204b-48d0-96b4-692f692ca8ad/users/subscription",
+							"host": [
+								"{{api-course}}"
+							],
+							"path": [
+								"courses",
+								"0000380e-204b-48d0-96b4-692f692ca8ad",
+								"users",
+								"subscription"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Subscription course/user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"1116380e-204b-48d0-96b4-692f692ca8ad\");\r",
+									"pm.expect(pm.response.text()).to.includes(\"4366380e-204b-48d0-96b4-692f692ca8ad\");\r",
+									"pm.expect(pm.response.text()).to.includes(\"Patrícia Flávia Moreira\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"courseId\": \"1116380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-authuser}}/users/4366380e-204b-48d0-96b4-692f692ca8ad/courses/subscription",
+							"host": [
+								"{{api-authuser}}"
+							],
+							"path": [
+								"users",
+								"4366380e-204b-48d0-96b4-692f692ca8ad",
+								"courses",
+								"subscription"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Subscription course/user - Subscription Exists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 409\", function () {\r",
+									"pm.response.to.have.status(409);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"Error: subscription already exists!\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"courseId\": \"1116380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-authuser}}/users/4366380e-204b-48d0-96b4-692f692ca8ad/courses/subscription",
+							"host": [
+								"{{api-authuser}}"
+							],
+							"path": [
+								"users",
+								"4366380e-204b-48d0-96b4-692f692ca8ad",
+								"courses",
+								"subscription"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Subscription course/user - user Not Found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"User not found.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"courseId\": \"1116380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-authuser}}/users/0000380e-204b-48d0-96b4-692f692ca8ad/courses/subscription",
+							"host": [
+								"{{api-authuser}}"
+							],
+							"path": [
+								"users",
+								"0000380e-204b-48d0-96b4-692f692ca8ad",
+								"courses",
+								"subscription"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Instructors Subscription",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"2866380e-204b-48d0-96b4-692f692ca8ad\");\r",
+									"pm.expect(pm.response.text()).to.includes(\"INSTRUCTOR\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"2866380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-authuser}}/instructors/subscription",
+							"host": [
+								"{{api-authuser}}"
+							],
+							"path": [
+								"instructors",
+								"subscription"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Instructors Subscription - user Not Found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"User not found.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"0000380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-authuser}}/instructors/subscription",
+							"host": [
+								"{{api-authuser}}"
+							],
+							"path": [
+								"instructors",
+								"subscription"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New course - Instructor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"New name\");\r",
+									"pm.expect(pm.response.text()).to.includes(\"New description\");\r",
+									"pm.expect(pm.response.text()).to.includes(\"http://image new\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"courseLevel\": \"BEGINNER\",\r\n  \"courseStatus\": \"INPROGRESS\",\r\n  \"description\": \"New description\",\r\n  \"imageUrl\": \"http://image new\",\r\n  \"name\": \"New name\",\r\n  \"userInstructor\": \"7666380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-course}}/courses",
+							"host": [
+								"{{api-course}}"
+							],
+							"path": [
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New course - Admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"New name\");\r",
+									"pm.expect(pm.response.text()).to.includes(\"New description\");\r",
+									"pm.expect(pm.response.text()).to.includes(\"http://image new\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"courseLevel\": \"BEGINNER\",\r\n  \"courseStatus\": \"INPROGRESS\",\r\n  \"description\": \"New description\",\r\n  \"imageUrl\": \"http://image new\",\r\n  \"name\": \"New name\",\r\n  \"userInstructor\": \"5466380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-course}}/courses",
+							"host": [
+								"{{api-course}}"
+							],
+							"path": [
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New course - erro, Student",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"User must be INSTRUCTOR or ADMIN.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"courseLevel\": \"BEGINNER\",\r\n  \"courseStatus\": \"INPROGRESS\",\r\n  \"description\": \"New description\",\r\n  \"imageUrl\": \"http://image new\",\r\n  \"name\": \"New name\",\r\n  \"userInstructor\": \"3266380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-course}}/courses",
+							"host": [
+								"{{api-course}}"
+							],
+							"path": [
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New course - erro, Instructor not found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"Instructor not found.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"courseLevel\": \"BEGINNER\",\r\n  \"courseStatus\": \"INPROGRESS\",\r\n  \"description\": \"New description\",\r\n  \"imageUrl\": \"http://image new\",\r\n  \"name\": \"New name\",\r\n  \"userInstructor\": \"0000380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api-course}}/courses",
+							"host": [
+								"{{api-course}}"
+							],
+							"path": [
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Courses By User Id-8866 (3 Obj)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Total de objetos são 03\", function(){\r",
+									"var responseJson = pm.response.json();\r",
+									"pm.expect(responseJson.content).length(3);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"var responseJson = pm.response.json();\r",
+									"pm.expect(responseJson.content [0].courseId).to.eql(\"1246380e-204b-48d0-96b4-692f692ca8ad\");\r",
+									"pm.expect(responseJson.content [1].courseId).to.eql(\"1266380e-204b-48d0-96b4-692f692ca8ad\");\r",
+									"pm.expect(responseJson.content [2].courseId).to.eql(\"1296380e-204b-48d0-96b4-692f692ca8ad\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api-authuser}}/users/8866380e-204b-48d0-96b4-692f692ca8ad/courses",
+							"host": [
+								"{{api-authuser}}"
+							],
+							"path": [
+								"users",
+								"8866380e-204b-48d0-96b4-692f692ca8ad",
+								"courses"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "name,desc",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Course Id-1296",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"Deletamos o curso com sucesso!\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{api-course}}/courses/1296380e-204b-48d0-96b4-692f692ca8ad",
+							"host": [
+								"{{api-course}}"
+							],
+							"path": [
+								"courses",
+								"1296380e-204b-48d0-96b4-692f692ca8ad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Courses By User Id-8866 (2 Obj)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Total de objetos são 02\", function(){\r",
+									"var responseJson = pm.response.json();\r",
+									"pm.expect(responseJson.content).length(2);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"var responseJson = pm.response.json();\r",
+									"pm.expect(responseJson.content [0].courseId).to.eql(\"1246380e-204b-48d0-96b4-692f692ca8ad\");\r",
+									"pm.expect(responseJson.content [1].courseId).to.eql(\"1266380e-204b-48d0-96b4-692f692ca8ad\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api-authuser}}/users/8866380e-204b-48d0-96b4-692f692ca8ad/courses",
+							"host": [
+								"{{api-authuser}}"
+							],
+							"path": [
+								"users",
+								"8866380e-204b-48d0-96b4-692f692ca8ad",
+								"courses"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "name,desc",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Course Id-1246",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"Deletamos o curso com sucesso!\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{api-course}}/courses/1246380e-204b-48d0-96b4-692f692ca8ad",
+							"host": [
+								"{{api-course}}"
+							],
+							"path": [
+								"courses",
+								"1246380e-204b-48d0-96b4-692f692ca8ad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Users By Course Id-1246",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"Course Not Found.\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api-course}}/courses/1246380e-204b-48d0-96b4-692f692ca8ad/users",
+							"host": [
+								"{{api-course}}"
+							],
+							"path": [
+								"courses",
+								"1246380e-204b-48d0-96b4-692f692ca8ad",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "username,desc",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUser Id-7666",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"User deletado com sucesso.\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{api-authuser}}/users/7666380e-204b-48d0-96b4-692f692ca8ad",
+							"host": [
+								"{{api-authuser}}"
+							],
+							"path": [
+								"users",
+								"7666380e-204b-48d0-96b4-692f692ca8ad"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
+											"description": "(Required) userId"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "No Content",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
+											"description": "(Required) userId"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
+											"description": "(Required) userId"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
+											"description": "(Required) userId"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "All Courses By User Id-7666",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"console.log(pm.response.text());\r",
+									"pm.expect(pm.response.text()).to.includes(\"User not found.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api-authuser}}/users/7666380e-204b-48d0-96b4-692f692ca8ad/courses",
+							"host": [
+								"{{api-authuser}}"
+							],
+							"path": [
+								"users",
+								"7666380e-204b-48d0-96b4-692f692ca8ad",
+								"courses"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "name,desc",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Users By Course Id-1266",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Total de objetos é 01\", function(){\r",
+									"var responseJson = pm.response.json();\r",
+									"pm.expect(responseJson.content).length(1);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body\", function(){\r",
+									"var responseJson = pm.response.json();\r",
+									"pm.expect(responseJson.content [0].userId).to.eql(\"8866380e-204b-48d0-96b4-692f692ca8ad\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api-course}}/courses/1266380e-204b-48d0-96b4-692f692ca8ad/users",
+							"host": [
+								"{{api-course}}"
+							],
+							"path": [
+								"courses",
+								"1266380e-204b-48d0-96b4-692f692ca8ad",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "username,desc",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "//localhost:8080",
+			"type": "string"
+		}
+	]
+}
