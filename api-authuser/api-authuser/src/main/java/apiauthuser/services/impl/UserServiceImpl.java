@@ -12,9 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import apiauthuser.clients.CourseClient;
-import apiauthuser.models.UserCourseModel;
 import apiauthuser.models.UserModel;
-import apiauthuser.repositories.UserCourseRepository;
 import apiauthuser.repositories.UserRepository;
 import apiauthuser.services.UserService;
 
@@ -23,9 +21,6 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
     UserRepository userRepository;
-
-	@Autowired
-    UserCourseRepository userCourseRepository;
 	
 	@Autowired
     CourseClient courseClient;
@@ -43,16 +38,7 @@ public class UserServiceImpl implements UserService {
 	@Transactional 
 	@Override
 	public void delete(UserModel userModel) {
-		boolean deleteUserCourseInCourse = false;
-		List<UserCourseModel> userCourseModelList = userCourseRepository.findAllUserCourseIntoUser(userModel.getUserId());
-        if(!userCourseModelList.isEmpty()){
-            userCourseRepository.deleteAll(userCourseModelList);
-            deleteUserCourseInCourse = true;
-        }
         userRepository.delete(userModel);
-        if(deleteUserCourseInCourse){
-            courseClient.deleteUserInCourse(userModel.getUserId());
-        }
 	}
 
 	@Override

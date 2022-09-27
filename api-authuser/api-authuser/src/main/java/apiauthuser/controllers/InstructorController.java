@@ -19,9 +19,7 @@ import apiauthuser.dtos.InstructorDto;
 import apiauthuser.enums.UserType;
 import apiauthuser.models.UserModel;
 import apiauthuser.services.UserService;
-import lombok.extern.log4j.Log4j2;
 
-@Log4j2
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/instructors")

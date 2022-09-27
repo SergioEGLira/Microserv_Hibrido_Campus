@@ -37,7 +37,3 @@ INSERT INTO tb_lessons(lesson_id, creation_date, description, title, video_url, 
 INSERT INTO tb_lessons(lesson_id, creation_date, description, title, video_url, module_module_id) VALUES ('9096380e204b48d096b4692f692ca8ad', '2022-09-28 11:26:55.365287', 'description 10', 'title 10', 'http://video 10', '5296380e204b48d096b4692f692ca8ad');
 INSERT INTO tb_lessons(lesson_id, creation_date, description, title, video_url, module_module_id) VALUES ('9216380e204b48d096b4692f692ca8ad', '2022-09-29 11:26:55.365287', 'description 10.1', 'title 10.1', 'http://video 10.1', '5123380e204b48d096b4692f692ca8ad');
 INSERT INTO tb_lessons(lesson_id, creation_date, description, title, video_url, module_module_id) VALUES ('9226380e204b48d096b4692f692ca8ad', '2022-09-29 11:27:55.365287', 'description 10.2', 'title 10.2', 'http://video 10.2', '5123380e204b48d096b4692f692ca8ad');
-
-INSERT INTO tb_courses_users ( id, user_id, course_course_id)  VALUES ( '6ab8809cdb0941c88356267cf04b36fb', '8866380e204b48d096b4692f692ca8ad', '1246380e204b48d096b4692f692ca8ad');
-INSERT INTO tb_courses_users ( id, user_id, course_course_id)  VALUES ( '6ac8809cdb0941c88356267cf04b36fb', '7666380e204b48d096b4692f692ca8ad', '1266380e204b48d096b4692f692ca8ad');
-INSERT INTO tb_courses_users ( id, user_id, course_course_id)  VALUES ( '6ad8809cdb0941c88356267cf04b36fb', '8866380e204b48d096b4692f692ca8ad', '1266380e204b48d096b4692f692ca8ad');

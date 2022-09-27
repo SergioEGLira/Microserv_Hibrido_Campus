@@ -4,13 +4,11 @@ import java.util.Collection;
 import java.util.UUID;
 
 import javax.persistence.criteria.Expression;
-import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Root;
 
 import org.springframework.data.jpa.domain.Specification;
 
 import apicourse.models.CourseModel;
-import apicourse.models.CourseUserModel;
 import apicourse.models.LessonModel;
 import apicourse.models.ModuleModel;
 import net.kaczmarzyk.spring.data.jpa.domain.Equal;
@@ -54,11 +52,4 @@ public class SpecificationTemplate {
         };
     }
 
-	public static Specification<CourseModel> courseUserId(final UUID userId) {
-        return (root, query, cb) -> {
-            query.distinct(true);
-            Join<CourseModel, CourseUserModel> courseProd = root.join("coursesUsers");
-            return cb.equal(courseProd.get("userId"), userId);
-        };
-    }
 }
