@@ -108,7 +108,12 @@ public class CourseController {
 		
 		logger.info("PORTA UTILIZADA EM NOSSO TESTE DE INSTANCIAS = " + env.getProperty("local.server.port"));
 		
+		if(userId != null){
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(courseService.findAll(SpecificationTemplate.courseUserId(userId).and(spec), pageable));
+        } else {
             return ResponseEntity.status(HttpStatus.OK).body(courseService.findAll(spec, pageable));
+        }
         
     }
 

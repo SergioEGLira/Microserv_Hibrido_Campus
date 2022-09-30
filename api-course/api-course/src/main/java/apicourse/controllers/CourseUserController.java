@@ -22,6 +22,7 @@ import apicourse.dtos.SubscriptionDto;
 import apicourse.models.CourseModel;
 import apicourse.services.CourseService;
 import apicourse.services.UserService;
+import apicoursespecifications.SpecificationTemplate;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -35,13 +36,14 @@ public class CourseUserController {
 	
 	@GetMapping("/courses/{courseId}/users")
     public ResponseEntity<Object> getAllUsersByCourse(
+    		SpecificationTemplate.UserSpec spec,
     		@PageableDefault(page = 0, size = 20, sort = "userId", direction = Sort.Direction.ASC) Pageable pageable,
             @PathVariable(value = "courseId") UUID courseId){
 		Optional<CourseModel> courseModelOptional = courseService.findById(courseId);
         if(!courseModelOptional.isPresent()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Course Not Found.");
         }		
-		return ResponseEntity.status(HttpStatus.OK).body("");
+		return ResponseEntity.status(HttpStatus.OK).body(userService.findAll(SpecificationTemplate.userCourseId(courseId).and(spec), pageable));
     }
 
 	@PostMapping("/courses/{courseId}/users/subscription")

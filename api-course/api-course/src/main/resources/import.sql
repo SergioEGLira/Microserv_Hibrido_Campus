@@ -37,3 +37,25 @@ INSERT INTO tb_lessons(lesson_id, creation_date, description, title, video_url, 
 INSERT INTO tb_lessons(lesson_id, creation_date, description, title, video_url, module_module_id) VALUES ('9096380e204b48d096b4692f692ca8ad', '2022-09-28 11:26:55.365287', 'description 10', 'title 10', 'http://video 10', '5296380e204b48d096b4692f692ca8ad');
 INSERT INTO tb_lessons(lesson_id, creation_date, description, title, video_url, module_module_id) VALUES ('9216380e204b48d096b4692f692ca8ad', '2022-09-29 11:26:55.365287', 'description 10.1', 'title 10.1', 'http://video 10.1', '5123380e204b48d096b4692f692ca8ad');
 INSERT INTO tb_lessons(lesson_id, creation_date, description, title, video_url, module_module_id) VALUES ('9226380e204b48d096b4692f692ca8ad', '2022-09-29 11:27:55.365287', 'description 10.2', 'title 10.2', 'http://video 10.2', '5123380e204b48d096b4692f692ca8ad');
+
+INSERT INTO tb_users (user_id, email, full_name, user_status, user_type, cpf, image_url) VALUES ('8866380e204b48d096b4692f692ca8ad', 'felipe_novaes@silnave.com.br', 'Felipe Diego Thales Novaes', 'ACTIVE', 'STUDENT', '035.599.869-66', 'http://image 1');
+INSERT INTO tb_users (user_id, email, full_name, user_status, user_type, cpf, image_url) VALUES ('7766380e204b48d096b4692f692ca8ad', 'josefa.barbara.pires@mx.labinal.com', 'Josefa Bárbara Pires', 'ACTIVE', 'STUDENT', '656.022.560-75', 'http://image 2');
+INSERT INTO tb_users (user_id, email, full_name, user_status, user_type, cpf, image_url) VALUES ('7666380e204b48d096b4692f692ca8ad', 'ritamilenaalmada@hotmal.com', 'Rita Milena Almada', 'ACTIVE', 'INSTRUCTOR', '933.564.410-27', 'http://image 3');
+INSERT INTO tb_users (user_id, email, full_name, user_status, user_type, cpf, image_url) VALUES ('6566380e204b48d096b4692f692ca8ad', 'augusto.danilo.damota@meiryjoias.com.br', 'Augusto Danilo Luís da Mota', 'BLOCKED', 'STUDENT', '255.757.109-12', 'http://image 4');
+INSERT INTO tb_users (user_id, email, full_name, user_status, user_type, cpf, image_url) VALUES ('5466380e204b48d096b4692f692ca8ad', 'eloaclaradossantos@nine9.com.br', 'Eloá Clara Alice dos Santos', 'ACTIVE', 'ADMIN', '873.140.288-77', 'http://image 5');
+INSERT INTO tb_users (user_id, email, full_name, user_status, user_type, cpf, image_url) VALUES ('4366380e204b48d096b4692f692ca8ad', 'patricia_moreira@lonza.com', 'Patrícia Flávia Moreira', 'ACTIVE', 'STUDENT', '496.145.513-05', 'http://image 6');
+INSERT INTO tb_users (user_id, email, full_name, user_status, user_type, cpf, image_url) VALUES ('3266380e204b48d096b4692f692ca8ad', 'fernanda.antonella@custodes.com.br', 'Fernanda Antonella Sophia Barbosa', 'ACTIVE', 'STUDENT', '360.463.282-09', 'http://image 7');
+INSERT INTO tb_users (user_id, email, full_name, user_status, user_type, cpf, image_url) VALUES ('2966380e204b48d096b4692f692ca8ad', 'livia_assis@cartovale.com.br', 'Lívia Beatriz Sophia Assis', 'BLOCKED', 'STUDENT', '917.268.755-04', 'http://image 8');
+INSERT INTO tb_users (user_id, email, full_name, user_status, user_type, cpf, image_url) VALUES ('2866380e204b48d096b4692f692ca8ad', 'lucianajessicaporto@meiryjoias.com.br', 'Luciana Jéssica Porto', 'ACTIVE', 'STUDENT', '827.964.926-30', 'http://image 9');
+INSERT INTO tb_users (user_id, email, full_name, user_status, user_type, cpf, image_url) VALUES ('2766380e204b48d096b4692f692ca8ad', 'amanda-cortereal74@afsn.com.br', 'Amanda Luiza Cecília Corte Real', 'ACTIVE', 'INSTRUCTOR', '099.879.422-88', 'http://image 10');
+
+INSERT INTO tb_courses_users (user_id, course_id) VALUES ('8866380e204b48d096b4692f692ca8ad', '1246380e204b48d096b4692f692ca8ad');
+INSERT INTO tb_courses_users (user_id, course_id) VALUES ('7666380e204b48d096b4692f692ca8ad', '1266380e204b48d096b4692f692ca8ad');
+INSERT INTO tb_courses_users (user_id, course_id) VALUES ('8866380e204b48d096b4692f692ca8ad', '1266380e204b48d096b4692f692ca8ad');
+INSERT INTO tb_courses_users (user_id, course_id) VALUES ('7666380e204b48d096b4692f692ca8ad', '1296380e204b48d096b4692f692ca8ad');
+INSERT INTO tb_courses_users (user_id, course_id) VALUES ('6566380e204b48d096b4692f692ca8ad', '1276380e204b48d096b4692f692ca8ad');
+INSERT INTO tb_courses_users (user_id, course_id) VALUES ('5466380e204b48d096b4692f692ca8ad', '1126380e204b48d096b4692f692ca8ad');
+INSERT INTO tb_courses_users (user_id, course_id) VALUES ('6566380e204b48d096b4692f692ca8ad', '1256380e204b48d096b4692f692ca8ad');
+INSERT INTO tb_courses_users (user_id, course_id) VALUES ('3266380e204b48d096b4692f692ca8ad', '1256380e204b48d096b4692f692ca8ad');
+INSERT INTO tb_courses_users (user_id, course_id) VALUES ('3266380e204b48d096b4692f692ca8ad', '1276380e204b48d096b4692f692ca8ad');
+INSERT INTO tb_courses_users (user_id, course_id) VALUES ('6566380e204b48d096b4692f692ca8ad', '1296380e204b48d096b4692f692ca8ad');
