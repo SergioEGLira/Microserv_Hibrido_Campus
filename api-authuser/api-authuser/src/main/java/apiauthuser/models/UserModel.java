@@ -13,12 +13,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.hateoas.RepresentationModel;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import apiauthuser.dtos.UserEventDto;
 import apiauthuser.enums.UserStatus;
 import apiauthuser.enums.UserType;
 import lombok.Data;
@@ -63,5 +65,13 @@ public class UserModel extends RepresentationModel<UserModel> implements Seriali
     @Column(nullable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
     private LocalDateTime lastUpdateDate;
+
+    public UserEventDto convertToUserEventDto(){
+        var userEventDto = new UserEventDto();
+        BeanUtils.copyProperties(this, userEventDto);
+        userEventDto.setUserType(this.getUserType().toString());
+        userEventDto.setUserStatus(this.getUserStatus().toString());
+        return userEventDto;
+    }
 
 }
