@@ -82,7 +82,7 @@ public class UserController {
         if(!userModelOptional.isPresent()){
             return  ResponseEntity.status(HttpStatus.NOT_FOUND).body("User não encontrado...");
         } else{
-            userService.delete(userModelOptional.get());
+            userService.deleteUser(userModelOptional.get());
             log.debug("DELETE deleteUser userId received {} ", userId);
             log.info("Usuário {} foi deletado com sucesso!", userId);
             return  ResponseEntity.status(HttpStatus.OK).body("User deletado com sucesso.");
@@ -102,7 +102,7 @@ public class UserController {
             userModel.setPhoneNumber(userDto.getPhoneNumber());
             userModel.setCpf(userDto.getCpf());
             userModel.setLastUpdateDate(LocalDateTime.now(ZoneId.of("UTC")));
-            userService.save(userModel);
+            userService.updateUser(userModel);
             log.debug("PUT updateUser userModel received {} ", userModel.getUserId());
             log.info("Usuário {} atualizado com sucesso!", userModel.getUserId());
             return  ResponseEntity.status(HttpStatus.OK).body(userModel);
@@ -122,7 +122,7 @@ public class UserController {
             var userModel = userModelOptional.get();
             userModel.setPassword(userDto.getPassword());
             userModel.setLastUpdateDate(LocalDateTime.now(ZoneId.of("UTC")));
-            userService.save(userModel);
+            userService.updatePassword(userModel);
             return  ResponseEntity.status(HttpStatus.OK).body("Senha atualizada com sucesso.");
         }
     }
@@ -137,7 +137,7 @@ public class UserController {
 	            var userModel = userModelOptional.get();
 	            userModel.setImageUrl(userDto.getImageUrl());
 	            userModel.setLastUpdateDate(LocalDateTime.now(ZoneId.of("UTC")));
-	            userService.save(userModel);
+	            userService.updateUser(userModel);
 	            return  ResponseEntity.status(HttpStatus.OK).body(userModel);
 	    }
 	}

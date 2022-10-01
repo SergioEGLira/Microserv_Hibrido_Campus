@@ -15,6 +15,12 @@
 						"exec": [
 							"pm.test(\"Status code is 201\", function () {\r",
 							"pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body\", function(){\r",
+							"console.log(pm.response.text());\r",
+							"pm.expect(pm.response.text()).to.includes(\"new.isabel@email.com\");\r",
+							"pm.expect(pm.response.text()).to.includes(\"630.874.669-05\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -229,6 +235,523 @@
 					},
 					"status": "Not Found",
 					"code": 404,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "User Id-3266",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body\", function(){\r",
+							"var responseJson = pm.response.json();\r",
+							"pm.expect(responseJson.cpf).to.eql(\"475.730.770-50\");\r",
+							"pm.expect(responseJson.fullName).to.eql(\"New Fernanda Antonella Sophia Barbosa\");\r",
+							"pm.expect(responseJson.phoneNumber).to.eql(\"(00)00000-0000\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "*/*"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"cpf\": \"475.730.770-50\",\n  \"fullName\": \"New Fernanda Antonella Sophia Barbosa\",\n  \"phoneNumber\": \"(00)00000-0000\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api-authuser}}/users/3266380e-204b-48d0-96b4-692f692ca8ad",
+					"host": [
+						"{{api-authuser}}"
+					],
+					"path": [
+						"users",
+						"3266380e-204b-48d0-96b4-692f692ca8ad"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/signup",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "*/*"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Created",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/signup",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Unauthorized",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/signup",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Forbidden",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/signup",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Not Found",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cpf\": \"do veniam\",\n  \"email\": \"sunt nisi\",\n  \"fullName\": \"nisi ipsum Ut\",\n  \"imageUrl\": \"elit ullamco sed ipsum laborum\",\n  \"oldPassword\": \"Excepteur proident\",\n  \"password\": \"Duis esse\",\n  \"phoneNumber\": \"irure sit\",\n  \"username\": \"cu\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/signup",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Image Id-3266",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body\", function(){\r",
+							"var responseJson = pm.response.json();\r",
+							"pm.expect(responseJson.imageUrl).to.eql(\"new imageUrl\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"imageUrl\": \"new imageUrl\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api-authuser}}/users/3266380e-204b-48d0-96b4-692f692ca8ad/image",
+					"host": [
+						"{{api-authuser}}"
+					],
+					"path": [
+						"users",
+						"3266380e-204b-48d0-96b4-692f692ca8ad",
+						"image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Instructors Subscription Id-3266",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body\", function(){\r",
+							"console.log(pm.response.text());\r",
+							"pm.expect(pm.response.text()).to.includes(\"3266380e-204b-48d0-96b4-692f692ca8ad\");\r",
+							"pm.expect(pm.response.text()).to.includes(\"INSTRUCTOR\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": \"3266380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api-authuser}}/instructors/subscription",
+					"host": [
+						"{{api-authuser}}"
+					],
+					"path": [
+						"instructors",
+						"subscription"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Id-3266 (a ajustar DEL em cascata)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body\", function(){\r",
+							"console.log(pm.response.text());\r",
+							"pm.expect(pm.response.text()).to.includes(\"User deletado com sucesso.\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "{{api-authuser}}/users/3266380e-204b-48d0-96b4-692f692ca8ad",
+					"host": [
+						"{{api-authuser}}"
+					],
+					"path": [
+						"users",
+						"3266380e-204b-48d0-96b4-692f692ca8ad"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
+									"description": "(Required) userId"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "*/*"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "No Content",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
+									"description": "(Required) userId"
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Unauthorized",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
+									"description": "(Required) userId"
+								}
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Forbidden",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
+									"description": "(Required) userId"
+								}
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
 					"_postman_previewlanguage": "text",
 					"header": [
 						{
