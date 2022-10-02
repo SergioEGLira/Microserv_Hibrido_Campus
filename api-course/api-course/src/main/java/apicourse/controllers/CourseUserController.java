@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import apicourse.dtos.SubscriptionDto;
+import apicourse.enums.UserStatus;
 import apicourse.models.CourseModel;
+import apicourse.models.UserModel;
 import apicourse.services.CourseService;
 import apicourse.services.UserService;
 import apicoursespecifications.SpecificationTemplate;
@@ -54,7 +56,18 @@ public class CourseUserController {
         if(!courseModelOptional.isPresent()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Course Not Found.");
         }
-        return ResponseEntity.status(HttpStatus.CREATED).body("");
+        if(courseService.existsByCourseAndUser(courseId, subscriptionDto.getUserId())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Error: subscription already exists!");
+        }
+        Optional<UserModel> userModelOptional = userService.findById(subscriptionDto.getUserId());
+        if(!userModelOptional.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");
+        }
+        if(userModelOptional.get().getUserStatus().equals(UserStatus.BLOCKED.toString())){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("User is blocked.");
+        }
+        courseService.saveSubscriptionUserInCourse(courseModelOptional.get().getCourseId(), userModelOptional.get().getUserId());
+        return ResponseEntity.status(HttpStatus.CREATED).body("Subscription created successfully.");
     }
 	
 }

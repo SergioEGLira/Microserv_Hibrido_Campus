@@ -582,7 +582,137 @@
 			"response": []
 		},
 		{
-			"name": "User Id-3266 (a ajustar DEL em cascata)",
+			"name": "New course",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body\", function(){\r",
+							"console.log(pm.response.text());\r",
+							"pm.expect(pm.response.text()).to.includes(\"New name\");\r",
+							"pm.expect(pm.response.text()).to.includes(\"New description\");\r",
+							"pm.expect(pm.response.text()).to.includes(\"http://image new\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"courseLevel\": \"BEGINNER\",\r\n  \"courseStatus\": \"INPROGRESS\",\r\n  \"description\": \"New description\",\r\n  \"imageUrl\": \"http://image new\",\r\n  \"name\": \"New name\",\r\n  \"userInstructor\": \"2766380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api-course}}/courses",
+					"host": [
+						"{{api-course}}"
+					],
+					"path": [
+						"courses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New course - erro UserInstructor",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body\", function(){\r",
+							"console.log(pm.response.text());\r",
+							"pm.expect(pm.response.text()).to.includes(\"UserInstructorError\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"courseLevel\": \"BEGINNER\",\r\n  \"courseStatus\": \"INPROGRESS\",\r\n  \"description\": \"2 New description\",\r\n  \"imageUrl\": \"2 http://image new\",\r\n  \"name\": \"2 New name\",\r\n  \"userInstructor\": \"8866380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api-course}}/courses",
+					"host": [
+						"{{api-course}}"
+					],
+					"path": [
+						"courses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "* Subscription user/course",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": \"7666380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api-course}}/courses/1276380e-204b-48d0-96b4-692f692ca8ad/users/subscription",
+					"host": [
+						"{{api-course}}"
+					],
+					"path": [
+						"courses",
+						"1276380e-204b-48d0-96b4-692f692ca8ad",
+						"users",
+						"subscription"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Users By Course Id-1266",
 			"event": [
 				{
 					"listen": "test",
@@ -592,177 +722,114 @@
 							"pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Body\", function(){\r",
-							"console.log(pm.response.text());\r",
-							"pm.expect(pm.response.text()).to.includes(\"User deletado com sucesso.\");\r",
+							"pm.test(\"Total de objetos são 02\", function(){\r",
+							"var responseJson = pm.response.json();\r",
+							"pm.expect(responseJson.content).length(2);\r",
 							"});\r",
-							""
+							"\r",
+							"pm.test(\"Body\", function(){\r",
+							"var responseJson = pm.response.json();\r",
+							"pm.expect(responseJson.content [0].userId).to.eql(\"7666380e-204b-48d0-96b4-692f692ca8ad\");\r",
+							"pm.expect(responseJson.content [1].userId).to.eql(\"8866380e-204b-48d0-96b4-692f692ca8ad\");\r",
+							"});"
 						],
 						"type": "text/javascript"
 					}
 				}
 			],
 			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "*/*"
-					}
-				],
+				"method": "GET",
+				"header": [],
 				"url": {
-					"raw": "{{api-authuser}}/users/3266380e-204b-48d0-96b4-692f692ca8ad",
+					"raw": "{{api-course}}/courses/1266380e-204b-48d0-96b4-692f692ca8ad/users",
+					"host": [
+						"{{api-course}}"
+					],
+					"path": [
+						"courses",
+						"1266380e-204b-48d0-96b4-692f692ca8ad",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "username,desc",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Courses By User Id-8866 (2 Obj)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Total de objetos são 02\", function(){\r",
+							"var responseJson = pm.response.json();\r",
+							"pm.expect(responseJson.content).length(2);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body\", function(){\r",
+							"var responseJson = pm.response.json();\r",
+							"pm.expect(responseJson.content [0].courseId).to.eql(\"1246380e-204b-48d0-96b4-692f692ca8ad\");\r",
+							"pm.expect(responseJson.content [1].courseId).to.eql(\"1266380e-204b-48d0-96b4-692f692ca8ad\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api-authuser}}/users/8866380e-204b-48d0-96b4-692f692ca8ad/courses",
 					"host": [
 						"{{api-authuser}}"
 					],
 					"path": [
 						"users",
-						"3266380e-204b-48d0-96b4-692f692ca8ad"
+						"8866380e-204b-48d0-96b4-692f692ca8ad",
+						"courses"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "name,desc",
+							"disabled": true
+						}
 					]
 				}
 			},
-			"response": [
-				{
-					"name": "OK",
-					"originalRequest": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/users/:userId",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"users",
-								":userId"
-							],
-							"variable": [
-								{
-									"key": "userId",
-									"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
-									"description": "(Required) userId"
-								}
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "text",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "*/*"
-						}
-					],
-					"cookie": [],
-					"body": ""
-				},
-				{
-					"name": "No Content",
-					"originalRequest": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/users/:userId",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"users",
-								":userId"
-							],
-							"variable": [
-								{
-									"key": "userId",
-									"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
-									"description": "(Required) userId"
-								}
-							]
-						}
-					},
-					"status": "No Content",
-					"code": 204,
-					"_postman_previewlanguage": "text",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "text/plain"
-						}
-					],
-					"cookie": [],
-					"body": ""
-				},
-				{
-					"name": "Unauthorized",
-					"originalRequest": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/users/:userId",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"users",
-								":userId"
-							],
-							"variable": [
-								{
-									"key": "userId",
-									"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
-									"description": "(Required) userId"
-								}
-							]
-						}
-					},
-					"status": "Unauthorized",
-					"code": 401,
-					"_postman_previewlanguage": "text",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "text/plain"
-						}
-					],
-					"cookie": [],
-					"body": ""
-				},
-				{
-					"name": "Forbidden",
-					"originalRequest": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/users/:userId",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"users",
-								":userId"
-							],
-							"variable": [
-								{
-									"key": "userId",
-									"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
-									"description": "(Required) userId"
-								}
-							]
-						}
-					},
-					"status": "Forbidden",
-					"code": 403,
-					"_postman_previewlanguage": "text",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "text/plain"
-						}
-					],
-					"cookie": [],
-					"body": ""
-				}
-			]
+			"response": []
 		}
 	]
 }
