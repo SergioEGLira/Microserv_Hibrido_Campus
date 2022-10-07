@@ -1,11 +1,280 @@
 {
 	"info": {
 		"_postman_id": "47fb7703-afca-4af6-a2da-360e920ef695",
-		"name": "Test-Campus-Microserv",
+		"name": "Test-Postgres-Campus-Microserv",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "15549246"
 	},
 	"item": [
+		{
+			"name": "Teste logger server.port api-authusers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api-authuser/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api-authuser",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "username,desc",
+							"disabled": true
+						},
+						{
+							"key": "userType",
+							"value": "STUDENT",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "@meiryjoias.com.br",
+							"disabled": true
+						},
+						{
+							"key": "userStatus",
+							"value": "ACTIVE",
+							"disabled": true
+						},
+						{
+							"key": "courseId",
+							"value": "1266380e-204b-48d0-96b4-692f692ca8ad",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "*/*"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Unauthorized",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Forbidden",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Not Found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Teste logger server.port api-course",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"courseLevel\": \"BEGINNER\",\r\n  \"courseStatus\": \"CONCLUDED\",\r\n  \"description\": \"update description 02\",\r\n  \"imageUrl\": \"http://image 02 update\",\r\n  \"name\": \"update name 02\",\r\n  \"userInstructor\": \"0246380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api-course/courses/getAllCoursesPageable",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api-course",
+						"courses",
+						"getAllCoursesPageable"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "5",
+							"disabled": true
+						},
+						{
+							"key": "sort",
+							"value": "name,desc",
+							"disabled": true
+						},
+						{
+							"key": "courseLevel",
+							"value": "ADVANCED",
+							"disabled": true
+						},
+						{
+							"key": "courseStatus",
+							"value": "INPROGRESS",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "09",
+							"disabled": true
+						},
+						{
+							"key": "userId",
+							"value": "8866380e-204b-48d0-96b4-692f692ca8ad",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
 		{
 			"name": "registerUser",
 			"event": [
@@ -678,7 +947,9 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							""
+							"pm.test(\"Status code is 201\", function () {\r",
+							"pm.response.to.have.status(201);\r",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -689,7 +960,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"userId\": \"7666380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+					"raw": "{\r\n    \"userId\": \"5466380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -721,17 +992,7 @@
 							"pm.test(\"Status code is 200\", function () {\r",
 							"pm.response.to.have.status(200);\r",
 							"});\r",
-							"\r",
-							"pm.test(\"Total de objetos são 02\", function(){\r",
-							"var responseJson = pm.response.json();\r",
-							"pm.expect(responseJson.content).length(2);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Body\", function(){\r",
-							"var responseJson = pm.response.json();\r",
-							"pm.expect(responseJson.content [0].userId).to.eql(\"7666380e-204b-48d0-96b4-692f692ca8ad\");\r",
-							"pm.expect(responseJson.content [1].userId).to.eql(\"8866380e-204b-48d0-96b4-692f692ca8ad\");\r",
-							"});"
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -772,7 +1033,7 @@
 			"response": []
 		},
 		{
-			"name": "All Courses By User Id-8866 (2 Obj)",
+			"name": "All Courses By User Id-8866",
 			"event": [
 				{
 					"listen": "test",
@@ -781,17 +1042,7 @@
 							"pm.test(\"Status code is 200\", function () {\r",
 							"pm.response.to.have.status(200);\r",
 							"});\r",
-							"\r",
-							"pm.test(\"Total de objetos são 02\", function(){\r",
-							"var responseJson = pm.response.json();\r",
-							"pm.expect(responseJson.content).length(2);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Body\", function(){\r",
-							"var responseJson = pm.response.json();\r",
-							"pm.expect(responseJson.content [0].courseId).to.eql(\"1246380e-204b-48d0-96b4-692f692ca8ad\");\r",
-							"pm.expect(responseJson.content [1].courseId).to.eql(\"1266380e-204b-48d0-96b4-692f692ca8ad\");\r",
-							"});"
+							""
 						],
 						"type": "text/javascript"
 					}
