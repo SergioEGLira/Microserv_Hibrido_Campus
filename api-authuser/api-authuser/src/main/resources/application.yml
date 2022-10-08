@@ -1,0 +1,42 @@
+api:
+  broker:
+    exchange:
+      userevent: campus.userevent
+  url:
+    course: http://api-course/api-course/
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    hostname: localhost
+logging:
+  level:
+    apiauthuser: TRACE
+    org:
+      hibernate: INFO
+      springframework:
+        web: DEBUG
+    root: INFO
+server:
+  port: 8087
+  servlet:
+    context-path: /api-authuser/
+spring:
+  application:
+    name: api-authuser
+  datasource:
+    password: 1234512345
+    url: jdbc:postgresql://localhost:5432/authuser
+    username: postgres
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+  rabbitmq:
+    addresses: amqps://kozkstqk:ctW6Ya10zT9Jy0w0l_tO6zTq21reVths@moose.rmq.cloudamqp.com/kozkstqk

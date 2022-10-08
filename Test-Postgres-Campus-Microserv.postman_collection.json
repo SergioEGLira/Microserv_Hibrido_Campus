@@ -310,7 +310,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"cpf\": \"630.874.669-05\",\n  \"email\": \"new.isabel@email.com\",\n  \"fullName\": \"New Isabel Maria\",   \n  \"password\": \"newPassword\",\n  \"phoneNumber\": \"(11)11111-1111\",\n  \"username\": \"NewIsabel\"\n}",
+					"raw": "{\n  \"cpf\": \"630.874.669-05\",\n  \"email\": \"xxnew.isabel@email.com\",\n  \"fullName\": \"New Isabel Maria\",   \n  \"password\": \"newPassword\",\n  \"phoneNumber\": \"(11)11111-1111\",\n  \"username\": \"xxNewIsabel\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -783,7 +783,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"imageUrl\": \"new imageUrl\"\r\n}",
+					"raw": "{\r\n  \"imageUrl\": \"xnew imageUrl\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -830,7 +830,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"userId\": \"3266380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+					"raw": "{\r\n    \"userId\": \"2966380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -897,7 +897,7 @@
 			"response": []
 		},
 		{
-			"name": "New course - erro UserInstructor",
+			"name": "* New course - erro UserInstructor",
 			"event": [
 				{
 					"listen": "test",
@@ -921,7 +921,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"courseLevel\": \"BEGINNER\",\r\n  \"courseStatus\": \"INPROGRESS\",\r\n  \"description\": \"2 New description\",\r\n  \"imageUrl\": \"2 http://image new\",\r\n  \"name\": \"2 New name\",\r\n  \"userInstructor\": \"8866380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+					"raw": "{\r\n  \"courseLevel\": \"BEGINNER\",\r\n  \"courseStatus\": \"INPROGRESS\",\r\n  \"description\": \"2 New description\",\r\n  \"imageUrl\": \"2 http://image new\",\r\n  \"name\": \"2 New name\",\r\n  \"userInstructor\": \"7766380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -960,7 +960,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"userId\": \"5466380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+					"raw": "{\r\n    \"userId\": \"44b00adb-ffdd-4559-a53d-bd5811fd78ad\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -968,13 +968,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{api-course}}/courses/1276380e-204b-48d0-96b4-692f692ca8ad/users/subscription",
+					"raw": "{{api-course}}/courses/43f3d1bf-5ad2-4488-b71d-cad6629e8134/users/subscription",
 					"host": [
 						"{{api-course}}"
 					],
 					"path": [
 						"courses",
-						"1276380e-204b-48d0-96b4-692f692ca8ad",
+						"43f3d1bf-5ad2-4488-b71d-cad6629e8134",
 						"users",
 						"subscription"
 					]
@@ -1002,13 +1002,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{api-course}}/courses/1266380e-204b-48d0-96b4-692f692ca8ad/users",
+					"raw": "{{api-course}}/courses/1276380e-204b-48d0-96b4-692f692ca8ad/users",
 					"host": [
 						"{{api-course}}"
 					],
 					"path": [
 						"courses",
-						"1266380e-204b-48d0-96b4-692f692ca8ad",
+						"1276380e-204b-48d0-96b4-692f692ca8ad",
 						"users"
 					],
 					"query": [
@@ -1052,13 +1052,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{api-authuser}}/users/8866380e-204b-48d0-96b4-692f692ca8ad/courses",
+					"raw": "{{api-authuser}}/users/6566380e-204b-48d0-96b4-692f692ca8ad/courses",
 					"host": [
 						"{{api-authuser}}"
 					],
 					"path": [
 						"users",
-						"8866380e-204b-48d0-96b4-692f692ca8ad",
+						"6566380e-204b-48d0-96b4-692f692ca8ad",
 						"courses"
 					],
 					"query": [
@@ -1112,13 +1112,13 @@
 					}
 				],
 				"url": {
-					"raw": "{{api-authuser}}/users/8866380e-204b-48d0-96b4-692f692ca8ad",
+					"raw": "{{api-authuser}}/users/44b00adb-ffdd-4559-a53d-bd5811fd78ad",
 					"host": [
 						"{{api-authuser}}"
 					],
 					"path": [
 						"users",
-						"8866380e-204b-48d0-96b4-692f692ca8ad"
+						"44b00adb-ffdd-4559-a53d-bd5811fd78ad"
 					]
 				}
 			},
@@ -1289,13 +1289,13 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{api-course}}/courses/1266380e-204b-48d0-96b4-692f692ca8ad",
+					"raw": "{{api-course}}/courses/1126380e-204b-48d0-96b4-692f692ca8ad",
 					"host": [
 						"{{api-course}}"
 					],
 					"path": [
 						"courses",
-						"1266380e-204b-48d0-96b4-692f692ca8ad"
+						"1126380e-204b-48d0-96b4-692f692ca8ad"
 					]
 				}
 			},
