@@ -19,7 +19,7 @@ import org.springframework.web.client.RestTemplate;
 import apiauthuser.dtos.CourseDto;
 import apiauthuser.dtos.ResponsePageDto;
 import apiauthuser.services.UtilsService;
-import io.github.resilience4j.retry.annotation.Retry;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
@@ -35,7 +35,8 @@ public class CourseClient {
     @Value("${api.url.course}")
 	String REQUEST_URL_COURSE;
     
-    @Retry(name = "retryInstance", fallbackMethod = "retryfallback")
+//  @Retry(name = "retryInstance", fallbackMethod = "retryfallback")
+    @CircuitBreaker(name = "circuitbreakerInstance", fallbackMethod = "circuitbreakerfallback")
     public Page<CourseDto> getAllCoursesByUser(UUID userId, Pageable pageable){
         List<CourseDto> searchResult = null;
         ResponseEntity<ResponsePageDto<CourseDto>> result = null;
@@ -52,6 +53,12 @@ public class CourseClient {
         }
         log.info("Ending request /courses userId {} ", userId);
         return result.getBody();
+    }
+    
+    public Page<CourseDto> circuitbreakerfallback(UUID userId, Pageable pageable, Throwable t) {
+        log.error("Inside circuit breaker fallback, cause - {}", t.toString());
+        List<CourseDto> searchResult = new ArrayList<>();
+        return new PageImpl<>(searchResult);
     }
     
     public Page<CourseDto> retryfallback(UUID userId, Pageable pageable, Throwable t) {
