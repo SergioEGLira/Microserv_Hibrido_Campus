@@ -40,3 +40,11 @@ spring:
             non_contextual_creation: true
   rabbitmq:
     addresses: amqps://kozkstqk:ctW6Ya10zT9Jy0w0l_tO6zTq21reVths@moose.rmq.cloudamqp.com/kozkstqk
+
+resilience4j:
+ retry:
+    instances:
+      retryInstance:
+        maxRetryAttempts: 3
+        waitDuration: 5s
+    

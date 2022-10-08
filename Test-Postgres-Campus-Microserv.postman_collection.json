@@ -310,7 +310,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"cpf\": \"630.874.669-05\",\n  \"email\": \"xxnew.isabel@email.com\",\n  \"fullName\": \"New Isabel Maria\",   \n  \"password\": \"newPassword\",\n  \"phoneNumber\": \"(11)11111-1111\",\n  \"username\": \"xxNewIsabel\"\n}",
+					"raw": "{\n  \"cpf\": \"630.874.669-05\",\n  \"email\": \"1xxnew.isabel@email.com\",\n  \"fullName\": \"New Isabel Maria\",   \n  \"password\": \"newPassword\",\n  \"phoneNumber\": \"(11)11111-1111\",\n  \"username\": \"1xxNewIsabel\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -552,7 +552,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"cpf\": \"475.730.770-50\",\n  \"fullName\": \"New Fernanda Antonella Sophia Barbosa\",\n  \"phoneNumber\": \"(00)00000-0000\"\n}",
+					"raw": "{\n  \"cpf\": \"804.890.227-31\",\n  \"fullName\": \"New Sophie Débora Sebastiana Rodrigues\",\n  \"phoneNumber\": \"(11)00000-0000\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -783,7 +783,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"imageUrl\": \"xnew imageUrl\"\r\n}",
+					"raw": "{\r\n  \"imageUrl\": \"1xnew imageUrl\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -830,7 +830,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"userId\": \"2966380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+					"raw": "{\r\n    \"userId\": \"d397c831-c1ed-47f1-b116-41b50a1e77a3\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -921,7 +921,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"courseLevel\": \"BEGINNER\",\r\n  \"courseStatus\": \"INPROGRESS\",\r\n  \"description\": \"2 New description\",\r\n  \"imageUrl\": \"2 http://image new\",\r\n  \"name\": \"2 New name\",\r\n  \"userInstructor\": \"7766380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+					"raw": "{\r\n  \"courseLevel\": \"BEGINNER\",\r\n  \"courseStatus\": \"INPROGRESS\",\r\n  \"description\": \"2 New description\",\r\n  \"imageUrl\": \"2 http://image new\",\r\n  \"name\": \"2 New name\",\r\n  \"userInstructor\": \"83e9cc32-c74e-459c-820d-1ae0530d59c8\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -941,7 +941,7 @@
 			"response": []
 		},
 		{
-			"name": "* Subscription user/course",
+			"name": "Subscription user/course",
 			"event": [
 				{
 					"listen": "test",
@@ -960,7 +960,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"userId\": \"44b00adb-ffdd-4559-a53d-bd5811fd78ad\"\r\n}",
+					"raw": "{\r\n    \"userId\": \"559ed112-47ca-4d1c-9450-fa8716aaeca3\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -968,13 +968,97 @@
 					}
 				},
 				"url": {
-					"raw": "{{api-course}}/courses/43f3d1bf-5ad2-4488-b71d-cad6629e8134/users/subscription",
+					"raw": "{{api-course}}/courses/1296380e-204b-48d0-96b4-692f692ca8ad/users/subscription",
 					"host": [
 						"{{api-course}}"
 					],
 					"path": [
 						"courses",
-						"43f3d1bf-5ad2-4488-b71d-cad6629e8134",
+						"1296380e-204b-48d0-96b4-692f692ca8ad",
+						"users",
+						"subscription"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Subscription user/course - erro userNotFound",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": \"00e9cc32-c74e-459c-820d-1ae0530d59c8\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api-course}}/courses/438fa12f-93c6-4b85-a13a-369eb796605f/users/subscription",
+					"host": [
+						"{{api-course}}"
+					],
+					"path": [
+						"courses",
+						"438fa12f-93c6-4b85-a13a-369eb796605f",
+						"users",
+						"subscription"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Subscription user/course - erro courseNotFound",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": \"83e9cc32-c74e-459c-820d-1ae0530d59c8\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api-course}}/courses/008fa12f-93c6-4b85-a13a-369eb796605f/users/subscription",
+					"host": [
+						"{{api-course}}"
+					],
+					"path": [
+						"courses",
+						"008fa12f-93c6-4b85-a13a-369eb796605f",
 						"users",
 						"subscription"
 					]
@@ -1112,13 +1196,196 @@
 					}
 				],
 				"url": {
-					"raw": "{{api-authuser}}/users/44b00adb-ffdd-4559-a53d-bd5811fd78ad",
+					"raw": "{{api-authuser}}/users/83e9cc32-c74e-459c-820d-1ae0530d59c8",
 					"host": [
 						"{{api-authuser}}"
 					],
 					"path": [
 						"users",
-						"44b00adb-ffdd-4559-a53d-bd5811fd78ad"
+						"83e9cc32-c74e-459c-820d-1ae0530d59c8"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
+									"description": "(Required) userId"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "*/*"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "No Content",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
+									"description": "(Required) userId"
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Unauthorized",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
+									"description": "(Required) userId"
+								}
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Forbidden",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "9cd13997-652b-799c-e3a1-11ab905a5032",
+									"description": "(Required) userId"
+								}
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "User - erro userNotFound",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body\", function(){\r",
+							"console.log(pm.response.text());\r",
+							"pm.expect(pm.response.text()).to.includes(\"User não encontrado...\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "{{api-authuser}}/users/00e9cc32-c74e-459c-820d-1ae0530d59c8",
+					"host": [
+						"{{api-authuser}}"
+					],
+					"path": [
+						"users",
+						"00e9cc32-c74e-459c-820d-1ae0530d59c8"
 					]
 				}
 			},
@@ -1289,13 +1556,49 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{api-course}}/courses/1126380e-204b-48d0-96b4-692f692ca8ad",
+					"raw": "{{api-course}}/courses/1296380e-204b-48d0-96b4-692f692ca8ad",
 					"host": [
 						"{{api-course}}"
 					],
 					"path": [
 						"courses",
-						"1126380e-204b-48d0-96b4-692f692ca8ad"
+						"1296380e-204b-48d0-96b4-692f692ca8ad"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "course Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body\", function(){\r",
+							"console.log(pm.response.text());\r",
+							"pm.expect(pm.response.text()).to.includes(\"Curso não existe.\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{api-course}}/courses/1296380e-204b-48d0-96b4-692f692ca8ad",
+					"host": [
+						"{{api-course}}"
+					],
+					"path": [
+						"courses",
+						"1296380e-204b-48d0-96b4-692f692ca8ad"
 					]
 				}
 			},
