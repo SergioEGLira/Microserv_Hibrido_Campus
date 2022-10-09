@@ -1569,7 +1569,7 @@
 			"response": []
 		},
 		{
-			"name": "course Copy",
+			"name": "course - erro notFound",
 			"event": [
 				{
 					"listen": "test",
@@ -1599,6 +1599,44 @@
 					"path": [
 						"courses",
 						"1296380e-204b-48d0-96b4-692f692ca8ad"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ">>> ApplicationGlobalConfigs",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body\", function(){\r",
+							"console.log(pm.response.text());\r",
+							"pm.expect(pm.response.text()).to.includes(\"https://github.com/SergioEGLira/config-server-repo-campus\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8888/application/main",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"application",
+						"main"
 					]
 				}
 			},

@@ -1,0 +1,17 @@
+server:
+  port: 8888
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: 'http://localhost:8761/eureka'
+  instance:
+    hostname: localhost
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/SergioEGLira/config-server-repo-campus
+          default-label: main
