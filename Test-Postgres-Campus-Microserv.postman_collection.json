@@ -1680,6 +1680,73 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": ">>> Test RefreshScope",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body\", function(){\r",
+							"console.log(pm.response.text());\r",
+							"pm.expect(pm.response.text()).to.includes(\"Testando o refreshscope.\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api-authuser}}/refreshscope",
+					"host": [
+						"{{api-authuser}}"
+					],
+					"path": [
+						"refreshscope"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ">>> Test actuator refresh",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{api-authuser}}/actuator/refresh",
+					"host": [
+						"{{api-authuser}}"
+					],
+					"path": [
+						"actuator",
+						"refresh"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
