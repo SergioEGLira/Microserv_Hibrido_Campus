@@ -1786,6 +1786,48 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Subscription user/course",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": \"5466380e-204b-48d0-96b4-692f692ca8ad\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api-course}}/courses/1256380e-204b-48d0-96b4-692f692ca8ad/users/subscription",
+					"host": [
+						"{{api-course}}"
+					],
+					"path": [
+						"courses",
+						"1256380e-204b-48d0-96b4-692f692ca8ad",
+						"users",
+						"subscription"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

@@ -12,15 +12,20 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import apicourse.dtos.NotificationCommandDto;
 import apicourse.models.CourseModel;
 import apicourse.models.LessonModel;
 import apicourse.models.ModuleModel;
+import apicourse.models.UserModel;
+import apicourse.publishers.NotificationCommandPublisher;
 import apicourse.repositories.CourseRepository;
 import apicourse.repositories.LessonRepository;
 import apicourse.repositories.ModuleRepository;
 import apicourse.repositories.UserRepository;
 import apicourse.services.CourseService;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 @Service
 public class CourseServiceImpl implements CourseService {
 	
@@ -36,6 +41,9 @@ public class CourseServiceImpl implements CourseService {
     @Autowired
     UserRepository userRepository;
             
+    @Autowired
+    NotificationCommandPublisher notificationCommandPublisher;    
+    
 	@Transactional
     @Override
     public void delete(CourseModel courseModel) {
@@ -77,5 +85,20 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public void saveSubscriptionUserInCourse(UUID courseId, UUID userId) {
         courseRepository.saveCourseUser(courseId, userId);
+    }
+
+    @Transactional
+    @Override
+    public void saveSubscriptionUserInCourseAndSendNotification(CourseModel course, UserModel user) {
+        courseRepository.saveCourseUser(course.getCourseId(), user.getUserId());
+        try {
+            var notificationCommandDto = new NotificationCommandDto();
+            notificationCommandDto.setTitle("Bem-Vindo(a) ao Curso: " + course.getName());
+            notificationCommandDto.setMessage(user.getFullName() + " a sua inscrição foi realizada com sucesso!");
+            notificationCommandDto.setUserId(user.getUserId());
+            notificationCommandPublisher.publishNotificationCommand(notificationCommandDto);
+        } catch (Exception e) {
+            log.warn("Houve erro no envio da notificação!");
+        }
     }
 }
