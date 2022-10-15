@@ -1849,14 +1849,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8084/api-notification/users/5466380e-204b-48d0-96b4-692f692ca8ad/notifications",
-					"protocol": "http",
+					"raw": "{{api-notification}}/users/5466380e-204b-48d0-96b4-692f692ca8ad/notifications",
 					"host": [
-						"localhost"
+						"{{api-notification}}"
 					],
-					"port": "8084",
 					"path": [
-						"api-notification",
 						"users",
 						"5466380e-204b-48d0-96b4-692f692ca8ad",
 						"notifications"
@@ -1900,14 +1897,11 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8084/api-notification/users/9366380e-204b-48d0-96b4-692f692ca8ad/notifications/a446380e-204b-48d0-96b4-692f692ca8ad",
-					"protocol": "http",
+					"raw": "{{api-notification}}/users/9366380e-204b-48d0-96b4-692f692ca8ad/notifications/a446380e-204b-48d0-96b4-692f692ca8ad",
 					"host": [
-						"localhost"
+						"{{api-notification}}"
 					],
-					"port": "8084",
 					"path": [
-						"api-notification",
 						"users",
 						"9366380e-204b-48d0-96b4-692f692ca8ad",
 						"notifications",
