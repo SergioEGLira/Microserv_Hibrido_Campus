@@ -3,7 +3,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: 'http://localhost:8761/eureka'
+      defaultZone: http://${api.serviceRegistry.username}:${api.serviceRegistry.password}@localhost:8761/eureka
   instance:
     hostname: localhost
 spring:
@@ -15,3 +15,8 @@ spring:
         git:
           uri: https://github.com/SergioEGLira/config-server-repo-campus
           default-label: main
+          
+api:
+  serviceRegistry:
+    username: serviceregistry
+    password: '123sr'          

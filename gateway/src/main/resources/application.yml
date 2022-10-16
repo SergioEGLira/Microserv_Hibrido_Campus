@@ -1,11 +1,6 @@
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-  instance:
-    hostname: localhost
 server:
   port: 8080
+
 spring:
   application:
     name: gateway
@@ -21,3 +16,14 @@ spring:
       - id: api-notification
         predicates: Path=/api-notification/**
         uri: lb://API-NOTIFICATION
+
+api:
+  serviceRegistry:
+    username: serviceregistry
+    password: '123sr'
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${api.serviceRegistry.username}:${api.serviceRegistry.password}@localhost:8761/eureka
+  instance:
+    hostname: localhost

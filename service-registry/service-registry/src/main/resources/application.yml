@@ -13,5 +13,5 @@ spring:
 api:
   serviceRegistry:
     username: serviceregistry
-    password: '12345'
+    password: '123sr'
     
