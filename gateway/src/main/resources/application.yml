@@ -1,0 +1,23 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    hostname: localhost
+server:
+  port: 8080
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+      - id: api-authuser
+        predicates: Path=/api-authuser/**
+        uri: lb://API-AUTHUSER
+      - id: api-course
+        predicates: Path=/api-course/**
+        uri: lb://API-COURSE
+      - id: api-notification
+        predicates: Path=/api-notification/**
+        uri: lb://API-NOTIFICATION
