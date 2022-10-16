@@ -1664,6 +1664,21 @@
 				}
 			],
 			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "123cs",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "configserver",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {

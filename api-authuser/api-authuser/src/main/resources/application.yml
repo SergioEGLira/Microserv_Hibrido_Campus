@@ -7,3 +7,5 @@ spring:
     config:
       discovery:
         serviceId: config-server
+      username: configserver
+      password: '123cs'

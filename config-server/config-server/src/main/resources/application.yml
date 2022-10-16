@@ -17,6 +17,9 @@ spring:
           default-label: main
           
 api:
+  configServer:
+    username: configserver
+    password: '123cs'
   serviceRegistry:
     username: serviceregistry
     password: '123sr'          
