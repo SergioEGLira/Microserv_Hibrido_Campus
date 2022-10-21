@@ -18,6 +18,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -50,6 +51,7 @@ public class UserController {
 	@Autowired
 	UserService userService;
 
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@GetMapping
 	public ResponseEntity<Page<UserModel>> getAllUsersPaged(SpecificationTemplate.UserSpec spec,
 						@PageableDefault(page = 0, size = 20, 
@@ -65,6 +67,7 @@ public class UserController {
 		return ResponseEntity.status(HttpStatus.OK).body(userModelPage);
 	}
 
+	@PreAuthorize("hasAnyRole('STUDENT')")
 	@GetMapping("/{userId}")
     public ResponseEntity<Object> getOneUser(@PathVariable(value = "userId") UUID userId){
 		Optional<UserModel> userModelOptional = userService.findById(userId);
