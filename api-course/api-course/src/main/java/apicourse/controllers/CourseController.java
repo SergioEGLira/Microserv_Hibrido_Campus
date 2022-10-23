@@ -18,6 +18,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -54,6 +55,7 @@ public class CourseController {
 	@Autowired
     CourseValidator courseValidator;
 	
+	@PreAuthorize("hasAnyRole('INSTRUCTOR')")
 	@DeleteMapping("/{courseId}")
     public ResponseEntity<Object> deleteCourse(@PathVariable(value="courseId") UUID courseId){
         log.debug("DELETE deleteCourse courseId received {} ", courseId);
@@ -67,6 +69,7 @@ public class CourseController {
         return ResponseEntity.status(HttpStatus.OK).body("Deletamos o curso com sucesso!");
     }
 
+	@PreAuthorize("hasAnyRole('INSTRUCTOR')")
 	@PostMapping
     public ResponseEntity<Object> saveCourse(@RequestBody CourseDto courseDto, Errors errors){
         log.debug("POST saveCourse courseDto received {} ", courseDto.toString());
@@ -84,6 +87,7 @@ public class CourseController {
         return ResponseEntity.status(HttpStatus.CREATED).body(courseModel);
     }
 
+	@PreAuthorize("hasAnyRole('INSTRUCTOR')")
 	@PutMapping("/{courseId}")
     public ResponseEntity<Object> updateCourse(@PathVariable(value="courseId") UUID courseId,
                                                @RequestBody @Valid CourseDto courseDto){
@@ -101,6 +105,7 @@ public class CourseController {
         return ResponseEntity.status(HttpStatus.OK).body(courseService.save(courseModel));
     }
 	
+	@PreAuthorize("hasAnyRole('STUDENT')")
 	@GetMapping (value = "/getAllCoursesPageable")
     public ResponseEntity<Page<CourseModel>> getAllCoursesPaged(SpecificationTemplate.CourseSpec spec,
     		@PageableDefault(page = 0, size = 20, sort = "courseId", direction = Sort.Direction.ASC) Pageable pageable,
@@ -117,6 +122,7 @@ public class CourseController {
         
     }
 
+	@PreAuthorize("hasAnyRole('STUDENT')")
 	@GetMapping("/getOneCourse/{courseId}")
     public ResponseEntity<Object> getOneCourse(@PathVariable(value="courseId") UUID courseId){
         Optional<CourseModel> courseModelOptional = courseService.findById(courseId);
